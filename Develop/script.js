@@ -44,3 +44,6 @@ $(function () {
   setInterval(updateDateTime, 1000); // Updates the time every second
 
 });
+
+
+// MAYBE make a hidden time element that keeps time in military time so it is easier to write a conditional to check if the currentTime is < or > the time-blocks id... or possibly check against the textContent of the div element with class .hour
