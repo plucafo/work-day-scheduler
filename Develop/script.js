@@ -1,4 +1,7 @@
-var saveBtn = $('.saveBtn');
+var saveBtn = $(".saveBtn");
+var currentDateEl = $("#currentDate");
+var currentTimeEl = $("#currentTime");
+var timeBlockEl = $(".time-block");
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
@@ -11,39 +14,54 @@ $(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
-  
-  saveBtn.on('click', function(e){
-    console.log('testing');
-  })
 
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
+  saveBtn.on("click", function () {
+    var timeBlock = $(this).parent(".time-block");
+    var timeBlockId = timeBlock.attr("id");
+
+    var task = timeBlock.find(".description").val();
+
+    localStorage.setItem(timeBlockId, task);
+  });
+
+ 
+
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-  var currentDateEl = $('#currentDate');
-  var currentTimeEl = $('#currentTime');
+  
 
   // Sets the Date and Time and writes it to the page whenever the function is called
   function updateDateTime() {
-    var currentDate = dayjs().format('dddd, MMMM D');
-    var currentTime = dayjs().format('h:mma');
+    var currentDate = dayjs().format("dddd, MMMM D");
+    var currentTime = dayjs().format("h:mma");
 
     currentDateEl.text(currentDate);
     currentTimeEl.text(currentTime);
   }
-  
+
   updateDateTime(); // Set initial Date / Time
 
   setInterval(updateDateTime, 1000); // Updates the time every second
 
+   // TODO: Add code to apply the past, present, or future class to each time
+  // block by comparing the id to the current hour. HINTS: How can the id
+  // attribute of each time-block be used to conditionally add or remove the
+  // past, present, and future classes? How can Day.js be used to get the
+  // current hour in 24-hour time?
+  
+  timeBlockEl.each(function () {
+    var timeBlock = $(this);
+    var hour = parseInt(timeBlock.attr("id").split("-")[1]);
+
+    if (hour === parseInt(currentTimeEl.text().split(":")[0])) {
+      timeBlock.addClass("present");
+    } else if (hour < parseInt(currentTimeEl.text().split(":")[0])) {
+      timeBlock.addClass("past");
+    } else {
+      timeBlock.addClass("future");
+    }
+  });
 });
-
-
-// MAYBE make a hidden time element that keeps time in military time so it is easier to write a conditional to check if the currentTime is < or > the time-blocks id... or possibly check against the textContent of the div element with class .hour
