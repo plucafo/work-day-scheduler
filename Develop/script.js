@@ -18,8 +18,9 @@ $(function () {
   var currentDateTime = dayjs();
   var date = currentDateTime.format("dddd, MMMM D");
   var time = currentDateTime.format("h:mma");
-  var hour = currentDateTime.format("H");
+  var hour = parseInt(currentDateTime.format("H"));
   // var hour = 12;
+  console.log(hour);
 
   saveBtn.on("click", function () {
     var timeBlock = $(this).parent(".time-block");
@@ -30,10 +31,10 @@ $(function () {
     localStorage.setItem(timeBlockId, task);
   });
     
-  // THIS WORKS for displaying saved text to the text elements - write for loop
-  // var value = localStorage.getItem("hour-9")
-  // var textEl = $('hour-9').children(".description");
-  // textEl.val(value);
+  // THIS WORKS for displaying saved text to the text elements - write for loop 
+  var value = localStorage.getItem("hour-9")
+  var textEl = $('hour-9').children(".description");
+  textEl.val(value);
   
     
 
@@ -65,7 +66,7 @@ $(function () {
     var timeBlock = $(this);
   
     var timeBlockHour = parseInt(timeBlock.attr("id").split("-")[1]);
-
+  
     if (timeBlockHour === hour) {
       timeBlock.addClass("present");
     } else if (timeBlockHour < hour) {
@@ -75,3 +76,6 @@ $(function () {
     }
   });
 });
+
+
+
