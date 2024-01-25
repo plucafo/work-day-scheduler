@@ -32,11 +32,15 @@ $(function () {
   });
     
   // THIS WORKS for displaying saved text to the text elements - write for loop 
-  // for (var i = 9; i < 9; i++) {
   // var value = localStorage.getItem('hour-9')
   // var textEl = $('#hour-9').children(".description");
   // textEl.val(value);
-  // }
+  
+  for (var i = 9; i < 18; i++) {
+  var value = localStorage.getItem(`hour-${i}`)
+  var textEl = $(`#hour-${i}`).children(".description");
+  textEl.val(value);
+  }
   
     
 
