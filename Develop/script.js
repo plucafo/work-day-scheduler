@@ -15,6 +15,12 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
 
+  var currentDateTime = dayjs();
+  var date = currentDateTime.format("dddd, MMMM D");
+  var time = currentDateTime.format("h:mma");
+  var hour = currentDateTime.format("H");
+  // var hour = 12;
+
   saveBtn.on("click", function () {
     var timeBlock = $(this).parent(".time-block");
     var timeBlockId = timeBlock.attr("id");
@@ -23,23 +29,26 @@ $(function () {
 
     localStorage.setItem(timeBlockId, task);
   });
-
- 
+    
+  // THIS WORKS for displaying saved text to the text elements - write for loop
+  // var value = localStorage.getItem("hour-9")
+  // var textEl = $('hour-9').children(".description");
+  // textEl.val(value);
+  
+    
 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-  
 
+
+  
   // Sets the Date and Time and writes it to the page whenever the function is called
   function updateDateTime() {
-    var currentDate = dayjs().format("dddd, MMMM D");
-    var currentTime = dayjs().format("h:mma");
-
-    currentDateEl.text(currentDate);
-    currentTimeEl.text(currentTime);
+    currentDateEl.text(date);
+    currentTimeEl.text(time);
   }
 
   updateDateTime(); // Set initial Date / Time
@@ -54,11 +63,12 @@ $(function () {
   
   timeBlockEl.each(function () {
     var timeBlock = $(this);
-    var hour = parseInt(timeBlock.attr("id").split("-")[1]);
+  
+    var timeBlockHour = parseInt(timeBlock.attr("id").split("-")[1]);
 
-    if (hour === parseInt(currentTimeEl.text().split(":")[0])) {
+    if (timeBlockHour === hour) {
       timeBlock.addClass("present");
-    } else if (hour < parseInt(currentTimeEl.text().split(":")[0])) {
+    } else if (timeBlockHour < hour) {
       timeBlock.addClass("past");
     } else {
       timeBlock.addClass("future");
