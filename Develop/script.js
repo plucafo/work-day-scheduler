@@ -18,7 +18,7 @@ $(function () {
   var currentDateTime = dayjs();
   var date = currentDateTime.format("dddd, MMMM D");
   var time = currentDateTime.format("h:mma");
-  var hour = parseInt(currentDateTime.format("H"));
+  var hour = currentDateTime.format("H");
   // var hour = 12;
   console.log(hour);
 
@@ -33,7 +33,7 @@ $(function () {
     
   // THIS WORKS for displaying saved text to the text elements - write for loop 
   var value = localStorage.getItem("hour-9")
-  var textEl = $('hour-9').children(".description");
+  var textEl = $('#hour-9').children(".description");
   textEl.val(value);
   
     
@@ -65,7 +65,7 @@ $(function () {
   timeBlockEl.each(function () {
     var timeBlock = $(this);
   
-    var timeBlockHour = parseInt(timeBlock.attr("id").split("-")[1]);
+    var timeBlockHour = timeBlock.attr("id").split("-")[1];
   
     if (timeBlockHour === hour) {
       timeBlock.addClass("present");
