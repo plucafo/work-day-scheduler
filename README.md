@@ -11,10 +11,6 @@ The Work Day Scheduler is a simple calendar application designed to help users s
 - **Local Storage:** Tasks entered by the user are saved in the browser's local storage, allowing for persistence across page reloads.
 - **Current Date and Time:** The current date and time are displayed at the top of the page, updating in real-time.
 
-## Getting Started
-1. Clone the repository to your local machine.
-2. Open the `index.html` file in a web browser to use the Work Day Scheduler.
-
 ## Usage
 1. Each time block represents an hour of the work day.
 2. Type your tasks into the textarea of the corresponding time block.
@@ -27,11 +23,6 @@ The Work Day Scheduler is a simple calendar application designed to help users s
 - CSS (Bootstrap for styling)
 - JavaScript (jQuery for DOM manipulation)
 - [Day.js](https://day.js.org/) for handling dates and times
-
-## File Structure
-- `index.html`: The main HTML file containing the structure of the scheduler.
-- `style.css`: Custom CSS styles for the scheduler.
-- `script.js`: JavaScript file for dynamic functionality, local storage handling, and time-related features.
 
 ## Contributing
 If you'd like to contribute to the project, feel free to fork the repository and submit a pull request. Bug reports and feature requests are also welcome.
