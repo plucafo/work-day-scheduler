@@ -2,6 +2,10 @@
 
 [![Work Day Scheduler Landing Page](./Assets/landingpage.png)](./Assets/landingpage.png)
 
+[Github Repo](https://github.com/plucafo/work-day-scheduler)
+
+[Live Demo](https://plucafo.github.io/work-day-scheduler/)
+
 ## Overview
 The Work Day Scheduler is a simple calendar application designed to help users schedule their work day effectively. It provides a user-friendly interface where users can input and save tasks for specific hours of the day. The scheduler visually distinguishes between past, present, and future time blocks, making it easy for users to manage their daily tasks.
 
@@ -27,9 +31,9 @@ The Work Day Scheduler is a simple calendar application designed to help users s
 ## Contributing
 If you'd like to contribute to the project, feel free to fork the repository and submit a pull request. Bug reports and feature requests are also welcome.
 
-## License
-This project is licensed under the [MIT License](LICENSE).
-
 ## Acknowledgments
 - The Work Day Scheduler makes use of [Bootstrap](https://getbootstrap.com/) for styling and layout.
 - [Day.js](https://day.js.org/) is utilized for handling dates and times in JavaScript.
+
+## Authors
+- [plucafo](https://github.com/plucafo)
